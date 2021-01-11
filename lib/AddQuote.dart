@@ -8,6 +8,23 @@ class AddNote extends StatefulWidget {
 class _AddNoteState extends State<AddNote> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add quote"),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
+      ),
+      body: Column(
+        children: <Widget>[
+          Text("Enter the author name"),
+          TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText:"Enter the author name",
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
