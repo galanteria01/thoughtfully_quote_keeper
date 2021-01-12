@@ -2,16 +2,24 @@ import 'package:data_learn/Quote.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'AddQuote.dart';
 import 'QuoteCard.dart';
 
 void main() {
+
   runApp(MaterialApp(
-    home: Quotes(),
+    initialRoute: '/',
+    routes: {
+      '/': (context) => Quotes(),
+      '/add': (context) => AddQuote(),
+    },
+
   ));
 
 }
 
 class Quotes extends StatefulWidget {
+
   @override
   _QuotesState createState() => _QuotesState();
 }
@@ -53,7 +61,9 @@ class _QuotesState extends State<Quotes> {
         )).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () { },
+        onPressed: () {
+          Navigator.pushNamed(context, '/add');
+        },
         backgroundColor: Colors.redAccent,
         child: Icon(
           Icons.add,
