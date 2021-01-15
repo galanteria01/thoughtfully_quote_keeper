@@ -1,7 +1,6 @@
 import 'package:data_learn/Quote.dart';
+import 'package:data_learn/editQuote.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
 import 'AddQuote.dart';
 import 'QuoteCard.dart';
 
@@ -12,6 +11,7 @@ void main() {
     routes: {
       '/': (context) => Quotes(),
       '/add': (context) => AddQuote(),
+      '/edit':(context) =>EditQuote(),
     },
 
   ));
@@ -55,7 +55,9 @@ class _QuotesState extends State<Quotes> {
               });
         },
           edit: () {
+              Navigator.pushNamed(context, '/edit');
               setState(() {
+
                 quotes.add(quote);
               });
           }
