@@ -32,6 +32,7 @@ class _QuotesState extends State<Quotes> {
     Quote(quoteLine: "Whatever i cannot do, i do not understand" ,author: "Oscar wilde")
 
   ];
+
   Widget quoteCard(quote){
     return QuoteCard(quote: quote);
   }
@@ -61,8 +62,11 @@ class _QuotesState extends State<Quotes> {
         )).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
+        onPressed: () async{
+          dynamic result = await Navigator.pushNamed(context, '/add');
+          setState(() {
+            quotes.add(Quote(author: result['authorName'],quoteLine: result['quote']));
+          });
         },
         backgroundColor: Colors.redAccent,
         child: Icon(

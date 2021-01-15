@@ -54,7 +54,12 @@ class _AddQuoteState extends State<AddQuote> {
           ),
           SizedBox(height: 20.0,),
           FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context,{
+                  'authorName': authorName,
+                  'quote':quote,
+                });
+              },
               color: Colors.redAccent,
 
               child: Text("Submit",
