@@ -52,14 +52,16 @@ class _QuotesState extends State<Quotes> {
                 quotes.remove(quote);
               });
         },
-          edit: () {
-              Navigator.pushNamed(context, '/edit',arguments: {
+          edit: () async{
+              dynamic data = await Navigator.pushNamed(context, '/edit',arguments: {
                 'author':quote.author,
                 'quote':quote.quoteLine,
               });
               setState(() {
+                quotes.remove(quote);
+                Quote quoteNew = Quote(author: data['author'], quoteLine: data['quote']);
 
-                quotes.add(quote);
+                quotes.add(quoteNew);
               });
           }
         )).toList(),
