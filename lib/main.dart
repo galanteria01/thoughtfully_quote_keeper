@@ -13,9 +13,7 @@ void main() {
       '/add': (context) => AddQuote(),
       '/edit':(context) =>EditQuote(),
     },
-
   ));
-
 }
 
 class Quotes extends StatefulWidget {
@@ -55,7 +53,10 @@ class _QuotesState extends State<Quotes> {
               });
         },
           edit: () {
-              Navigator.pushNamed(context, '/edit');
+              Navigator.pushNamed(context, '/edit',arguments: {
+                'author':quote.author,
+                'quote':quote.quoteLine,
+              });
               setState(() {
 
                 quotes.add(quote);

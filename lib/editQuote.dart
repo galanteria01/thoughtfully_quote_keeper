@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Quote.dart';
+
 class EditQuote extends StatefulWidget {
   @override
   _EditQuoteState createState() => _EditQuoteState();
@@ -8,8 +10,15 @@ class EditQuote extends StatefulWidget {
 class _EditQuoteState extends State<EditQuote> {
   String author;
   String quote;
+  Map data = {};
+
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;
+    author = data['author'];
+    quote = data['quote'];
+    // print(author + quote);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit quote"),
@@ -21,12 +30,13 @@ class _EditQuoteState extends State<EditQuote> {
         children: <Widget>[
 
           TextField(
+            controller: TextEditingController()..text = author,
             maxLines: 1,
+            autofocus: true,
             onChanged: (text) {
               author = text;
             },
             decoration: InputDecoration(
-
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.0),
               ),
@@ -36,10 +46,10 @@ class _EditQuoteState extends State<EditQuote> {
           ),
           SizedBox(height: 20.0,),
           TextField(
+            controller: TextEditingController()..text = quote,
             onChanged: (text) {
               quote = text;
             },
-            autofocus: true,
             maxLines: 5,
             decoration: InputDecoration(
                 hoverColor: Colors.white,

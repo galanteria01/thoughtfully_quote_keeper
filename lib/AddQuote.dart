@@ -22,35 +22,41 @@ class _AddQuoteState extends State<AddQuote> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
 
-          TextField(
-            maxLines: 1,
-            onChanged: (text) {
-              authorName = text;
-            },
-            decoration: InputDecoration(
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: TextField(
+              autofocus: true,
+              maxLines: 1,
+              onChanged: (text) {
+                authorName = text;
+              },
+              decoration: InputDecoration(
 
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                hintText:"Enter the author name!",
               ),
-              hintText:"Enter the author name!",
-            ),
 
+            ),
           ),
           SizedBox(height: 20.0,),
-          TextField(
-            onChanged: (text) {
-              quote = text;
-            },
-            autofocus: true,
-            maxLines: 5,
-            decoration: InputDecoration(
-              hoverColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5.0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: TextField(
+              onChanged: (text) {
+                quote = text;
+              },
+              maxLines: 5,
+              decoration: InputDecoration(
+                hoverColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                hintText: "Enter the quote!"
               ),
-              hintText: "Enter the quote!"
-            ),
 
+            ),
           ),
           SizedBox(height: 20.0,),
           FlatButton(
@@ -61,7 +67,7 @@ class _AddQuoteState extends State<AddQuote> {
                 });
               },
               color: Colors.redAccent,
-
+              focusColor: Colors.white,
               child: Text("Submit",
               style: TextStyle(
                 color: Colors.white,
