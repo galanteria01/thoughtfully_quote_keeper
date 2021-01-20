@@ -2,14 +2,16 @@ import 'package:data_learn/Quote.dart';
 import 'package:data_learn/editQuote.dart';
 import 'package:flutter/material.dart';
 import 'AddQuote.dart';
+import 'Loading.dart';
 import 'QuoteCard.dart';
 
 void main() {
 
   runApp(MaterialApp(
-    initialRoute: '/',
+    initialRoute: '/loading',
     routes: {
       '/': (context) => Quotes(),
+      '/loading': (context) => Loading(),
       '/add': (context) => AddQuote(),
       '/edit':(context) =>EditQuote(),
     },
@@ -37,12 +39,39 @@ class _QuotesState extends State<Quotes> {
 
   @override
   Widget build(BuildContext context) {
+    // This function handles the click on drop down menu
+    void handleClick(String value) {
+      switch (value) {
+        case 'About':
+
+          break;
+        case 'Support':
+          break;
+      }
+    }
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('Thoughtfully'),
         centerTitle: true,
         backgroundColor: Colors.redAccent,
+        automaticallyImplyLeading: false,
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: handleClick,
+            itemBuilder: (BuildContext context){
+              return {'About', 'Support'}.map((String choice){
+                return PopupMenuItem(
+                    child: Text(choice),
+                  value: choice,
+                );
+              }).toList();
+            },
+
+
+
+          )
+        ],
       ),
       body: Column(
         children: quotes.map((quote) => QuoteCard(
